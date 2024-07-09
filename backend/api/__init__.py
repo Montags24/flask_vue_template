@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
 from config import config
 
 db = SQLAlchemy()
@@ -9,6 +10,8 @@ migrate = Migrate()
 
 def create_app(config_name):
     app = Flask(__name__)
+    # This configuration allows all origins (*) to access endpoints under /api
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
     app.config.from_object(config[config_name])
 
     from api.bp_template import bp as bp_template
