@@ -26,3 +26,22 @@ This repository will hold the minimum amount of code to get started with the fol
 
     * Pytest
     * Vitest
+
+# Setting up postgreSQL database on macOS
+## Install postgres and create user
+```sh
+brew install postgresql
+createuser -s postgres
+brew services restart postgresql
+```
+## Setup pgAdmin/dBeaver
+
+## Initialise migrations folder
+```sh
+cd backend
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+```
+
+
