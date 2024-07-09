@@ -20,3 +20,6 @@ def create_app(config_name):
         migrate.init_app(app, db=db)
 
     return app
+
+
+from api import models  # noqa: F401 E402
