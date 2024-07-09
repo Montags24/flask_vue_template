@@ -1,7 +1,7 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from config import config
 
 db = SQLAlchemy()
@@ -15,6 +15,7 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
 
     from api.bp_template import bp as bp_template
+
     app.register_blueprint(bp_template, url_prefix="/api/test")
 
     with app.app_context():
